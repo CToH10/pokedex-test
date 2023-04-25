@@ -1,17 +1,30 @@
 <template>
-  <p>{{ this.name }}</p>
+  <li>
+    <p>{{ name }}</p>
+  </li>
 </template>
 
-<script lang="ts" setup>
+<script lang="ts">
 export default {
-  props: {
-    name: String,
-  },
+	props: {
+		position: Object,
+	},
+	data() {
+		return {
+			style: {
+				color: "red",
+			},
+			name: String,
+		};
+	},
+	created() {
+		this.name = JSON.parse(JSON.stringify(this.position)).type.name;
+	},
 };
 </script>
 
-<style scoped>
+<style>
 p {
-  color: v-bind("style.color");
+	color: v-bind("style.color");
 }
 </style>
