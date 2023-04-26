@@ -47,7 +47,7 @@ export default defineComponent({
       this.image = (await api.get(this.link)).data.sprites.front_default;
     },
     addState(name: string, image: string) {
-      this.$store.commit("addTeam", { name: name, image: image });
+      this.$store.commit("addTeam", { name: name, url: image });
     },
     removeState(name: string) {
       this.$store.commit("removeTeam", name);
