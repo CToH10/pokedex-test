@@ -1,6 +1,6 @@
 <template>
 	<li>
-		<p>{{ pokeType.type.name }}</p>
+		<p class="text-light text-capitalize">{{ pokeType.type.name }}</p>
 	</li>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
 	<li class="ability">
-		<h4 class="title">
+		<h4 class="text-light text-capitalize">
 			{{ move.name }}
 		</h4>
 	</li>
