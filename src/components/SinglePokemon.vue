@@ -1,22 +1,22 @@
 <template>
-  <section>
-    <section class="basicInfo">
-      <figure>
-        <img :src="pokemonImage" :alt="pokemonName" />
-        <figcaption>{{ pokemonName }}</figcaption>
-      </figure>
-      <ul v-for="(type, index) in types" :key="index" class="types">
-        <PokemonType :pokeType="type" />
-      </ul>
-    </section>
-    <section class="info">
-      <h2 class="name">{{ pokemonName }}</h2>
-    </section>
-    <ul class="abilities" v-for="(move, index) in moves" :key="index">
-      <PokemonAbility />
-    </ul>
-    <button @click="show">Show</button>
-  </section>
+	<section>
+		<section class="basicInfo">
+			<figure>
+				<img :src="pokemonImage" :alt="pokemonName" />
+				<figcaption>{{ pokemonName }}</figcaption>
+			</figure>
+			<button @click="back">Go Back</button>
+			<ul v-for="(type, index) in types" :key="index" class="types">
+				<PokemonType :pokeType="type" />
+			</ul>
+		</section>
+		<section class="info">
+			<h2 class="name">{{ pokemonName }}</h2>
+		</section>
+		<ul class="abilities" v-for="(move, index) in moves" :key="index">
+			<PokemonAbility :moves="move" />
+		</ul>
+	</section>
 </template>
 
 <script lang="ts">
@@ -24,58 +24,67 @@ import PokemonAbility from "./PokemonAbility.vue";
 import PokemonType from "./PokemonType.vue";
 import { api } from "@/service/axios";
 
-export default {
-  components: {
-    PokemonAbility,
-    PokemonType,
-  },
-  data() {
-    return {
-      types: [],
-      pokemonName: "",
-      pokemonImage: "",
-      selected: this.$route.params.pokeName,
-    };
-  },
-  methods: {
-    show() {
-      console.log(this.types);
-      console.log(this.pokemonName);
-    },
-    async getTypes() {
-      const url: string = "/pokemon/" + this.selected;
-      const info = (await api.get(url)).data;
+interface iData {
+	types: [];
+	pokemonName: string;
+	pokemonImage: string;
+	moves: [];
+	selected: string;
+}
 
-      return info;
-    },
-  },
-  created() {
-    this.getTypes().then((item) => {
-      this.types = item.types;
-      this.pokemonName = item.species.name;
-      this.pokemonImage = item.sprites.front_default;
-    });
-  },
+export default {
+	components: {
+		PokemonAbility,
+		PokemonType,
+	},
+	data(): iData {
+		return {
+			types: [],
+			pokemonName: "",
+			pokemonImage: "",
+			moves: [],
+			selected: this.$route.params.pokeName,
+		};
+	},
+	methods: {
+		back() {
+			history.back();
+		},
+		async getTypes() {
+			const url: string = "/pokemon/" + this.selected;
+			const info = (await api.get(url)).data;
+
+			return info;
+		},
+	},
+	created() {
+		this.getTypes().then((item) => {
+			this.types = item.types;
+			this.pokemonName = item.species.name;
+			this.pokemonImage = item.sprites.front_default;
+			this.moves = item.moves;
+		});
+	},
 };
 </script>
 
 <style>
 figcaption {
-  display: none;
+	display: none;
 }
 
 .types {
-  display: flex;
-  gap: clamp(1vw, 10px, 20px);
+	display: flex;
+	gap: clamp(1vw, 10px, 20px);
 
-  width: clamp(10vw, 75px, 120px);
-  color: teal;
+	width: clamp(10vw, 75px, 120px);
+	color: teal;
 }
 
 .info {
-  color: orangered;
+	color: orangered;
 }
 .info h2 {
-  text-transform: capitalize;
+	text-transform: capitalize;
 }
 </style>

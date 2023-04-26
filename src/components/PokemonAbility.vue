@@ -1,21 +1,27 @@
 <template>
 	<li class="ability">
 		<h4 class="title">
-			{{ abilityName }}
+			{{ moves.move.name }}
 		</h4>
-		<p class="description">
-			{{ power }}
-		</p>
 	</li>
 </template>
 
 <script lang="ts">
+function iMove() {
+	return {
+		move: {
+			name: String,
+			url: String,
+		},
+		version_group_details: String,
+	};
+}
 export default {
-	data() {
-		return {
-			abilityName: "Nome",
-			power: "text",
-		};
+	props: {
+		moves: {
+			type: iMove,
+			required: true,
+		},
 	},
 };
 </script>
@@ -23,5 +29,9 @@ export default {
 <style>
 li {
 	list-style: none;
+}
+
+h4 {
+	text-transform: capitalize;
 }
 </style>
