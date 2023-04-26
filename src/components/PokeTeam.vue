@@ -1,8 +1,12 @@
 <template>
 	<ul>
-		<li v-for="({ name, url }, index) in team" :key="index">
+		<li
+			v-for="({ name, url }, index) in team"
+			:key="index"
+			class="w-75 d-flex flex-column justify-content-center"
+		>
 			<img :src="url" :alt="name" />
-			<p>{{ name }}</p>
+			<p class="text-light text-capitalize align-self-center">{{ name }}</p>
 		</li>
 	</ul>
 </template>

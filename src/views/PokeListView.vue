@@ -1,6 +1,6 @@
 <template>
 	<Fragment>
-		<main>
+		<main style="padding-top: clamp(80px, 12vh, 95px)">
 			<ListPokemon />
 		</main>
 		<aside>

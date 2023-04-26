@@ -1,6 +1,6 @@
 <template>
 	<Fragment>
-		<main>
+		<main class="pt-5">
 			<SinglePokemon />
 		</main>
 		<aside>
