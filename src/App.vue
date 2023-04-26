@@ -1,6 +1,6 @@
 <template>
-	<div id="app">
-		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+	<div id="app" class="bg-dark h-100">
+		<nav class="navbar navbar-expand-md navbar-dark bg-primary">
 			<router-link class="nav-link text-light navbar-toggler" to="/">
 				Home
 			</router-link>

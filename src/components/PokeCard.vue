@@ -1,23 +1,27 @@
 <template>
-	<li>
+	<li
+		class="w-75 mw-75 d-flex flex-column justify-content-center align-items-center"
+	>
 		<figure>
 			<img :src="image" :alt="rawObj.name" />
 			<figcaption class="d-none">{{ rawObj.name }}</figcaption>
 		</figure>
-		<h3 class="text-capitalize">{{ rawObj.name }}</h3>
-		<section class="buttons d-grid gap-2 col-6 mx-auto">
-			<router-link class="text-reset text-decoration-none" :to="link"
+		<h3 class="text-capitalize text-light">{{ rawObj.name }}</h3>
+		<section class="buttons d-grid gap-2 col-6 mx-auto h-50">
+			<router-link
+				class="text-decoration-none w-100 text-light link-light"
+				:to="link"
 				>More info</router-link
 			>
 			<button
-				class="addToTeam btn btn-primary"
+				class="addToTeam btn btn-primary btn-sm w-100"
 				@click="addState(rawObj.name, image)"
 				v-if="!isOnTeam(rawObj.name)"
 			>
 				Add to team
 			</button>
 			<button
-				class="btn btn-danger"
+				class="btn btn-danger btn-sm w-100"
 				@click="removeState(rawObj.name)"
 				v-if="isOnTeam(rawObj.name)"
 			>
