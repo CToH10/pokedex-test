@@ -20,7 +20,7 @@ function iPokeType() {
 export default defineComponent({
 	props: {
 		pokeType: {
-			type: iPokeType,
+			type: Object as typeof iPokeType,
 			required: true,
 		},
 	},

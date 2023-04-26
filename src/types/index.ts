@@ -1,13 +1,13 @@
 export interface iPokemon {
-  name: string;
-  url: string;
+	name: string;
+	url: string;
 }
 export type iPokeList = Array<iPokemon>;
 
 export interface iMove {
-  move: {
-    name: String;
-    url: String;
-  };
-  version_group_details: String;
+	move: {
+		name: string;
+		url: string;
+	};
+	version_group_details: string;
 }

@@ -13,8 +13,8 @@
 		<section class="info">
 			<h2 class="name">{{ pokemonName }}</h2>
 		</section>
-		<ul class="abilities" v-for="(move, index) in moves" :key="index">
-			<PokemonAbility :moves="move" />
+		<ul class="abilities" v-for="({ move }, index) in moves" :key="index">
+			<PokemonAbility :move="move" />
 		</ul>
 	</section>
 </template>

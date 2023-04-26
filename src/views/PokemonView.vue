@@ -1,12 +1,12 @@
 <template>
-  <Fragment>
-    <main>
-      <SinglePokemon />
-    </main>
-    <aside>
-      <PokeTeam />
-    </aside>
-  </Fragment>
+	<Fragment>
+		<main>
+			<SinglePokemon />
+		</main>
+		<aside>
+			<PokeTeam />
+		</aside>
+	</Fragment>
 </template>
 
 <script lang="ts">
@@ -16,10 +16,11 @@ import { Component, Vue } from "vue-property-decorator";
 import { Fragment } from "vue-fragment";
 
 @Component({
-  components: {
-    SinglePokemon,
-    PokeTeam,
-  },
+	components: {
+		SinglePokemon,
+		PokeTeam,
+		Fragment,
+	},
 })
 export default class PokemonView extends Vue {}
 </script>
