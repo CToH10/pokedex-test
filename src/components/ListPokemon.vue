@@ -1,8 +1,12 @@
 <template>
 	<section>
-		<section class="navigation">
-			<button v-if="previous" @click="previousList">Previous 20</button>
-			<button v-if="next" @click="nextList">Next 20</button>
+		<section class="navigation d-grid gap-2 d-md-block">
+			<button v-if="previous" @click="previousList" class="btn btn-secondary">
+				Previous 20
+			</button>
+			<button v-if="next" @click="nextList" class="btn btn-secondary">
+				Next 20
+			</button>
 		</section>
 		<ul>
 			<PokeCard :pokemon="pokemon" v-for="pokemon in list" :key="pokemon.url" />
@@ -72,24 +76,3 @@ export default defineComponent({
 	},
 });
 </script>
-
-<style>
-figcaption {
-	display: none;
-}
-
-.types {
-	display: flex;
-	gap: clamp(1vw, 10px, 20px);
-
-	width: clamp(10vw, 75px, 120px);
-	color: teal;
-}
-
-.info {
-	color: orangered;
-}
-.info h2 {
-	text-transform: uppercase;
-}
-</style>

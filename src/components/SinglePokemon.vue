@@ -3,9 +3,9 @@
 		<section class="basicInfo">
 			<figure>
 				<img :src="pokemonImage" :alt="pokemonName" />
-				<figcaption>{{ pokemonName }}</figcaption>
+				<figcaption class="d-none">{{ pokemonName }}</figcaption>
 			</figure>
-			<button @click="back">Go Back</button>
+			<button @click="back" class="btn btn-secondary">Go Back</button>
 			<ul v-for="(type, index) in types" :key="index" class="types">
 				<PokemonType :pokeType="type" />
 			</ul>
@@ -68,24 +68,3 @@ export default defineComponent({
 	},
 });
 </script>
-
-<style>
-figcaption {
-	display: none;
-}
-
-.types {
-	display: flex;
-	gap: clamp(1vw, 10px, 20px);
-
-	width: clamp(10vw, 75px, 120px);
-	color: teal;
-}
-
-.info {
-	color: orangered;
-}
-.info h2 {
-	text-transform: capitalize;
-}
-</style>

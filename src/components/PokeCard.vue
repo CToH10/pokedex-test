@@ -2,19 +2,25 @@
 	<li>
 		<figure>
 			<img :src="image" :alt="rawObj.name" />
-			<figcaption>{{ rawObj.name }}</figcaption>
+			<figcaption class="d-none">{{ rawObj.name }}</figcaption>
 		</figure>
-		<h3>{{ rawObj.name }}</h3>
-		<section class="buttons">
-			<router-link :to="link">More info</router-link>
+		<h3 class="text-capitalize">{{ rawObj.name }}</h3>
+		<section class="buttons d-grid gap-2 col-6 mx-auto">
+			<router-link class="text-reset text-decoration-none" :to="link"
+				>More info</router-link
+			>
 			<button
-				class="addToTeam"
+				class="addToTeam btn btn-primary"
 				@click="addState(rawObj.name, image)"
 				v-if="!isOnTeam(rawObj.name)"
 			>
 				Add to team
 			</button>
-			<button @click="removeState(rawObj.name)" v-if="isOnTeam(rawObj.name)">
+			<button
+				class="btn btn-danger"
+				@click="removeState(rawObj.name)"
+				v-if="isOnTeam(rawObj.name)"
+			>
 				Remove
 			</button>
 		</section>
@@ -58,9 +64,3 @@ export default defineComponent({
 	},
 });
 </script>
-
-<style>
-figcaption {
-	display: none;
-}
-</style>

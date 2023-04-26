@@ -34,10 +34,3 @@ export default defineComponent({
 	},
 });
 </script>
-
-<style>
-p {
-	color: v-bind("style.color");
-	text-transform: capitalize;
-}
-</style>

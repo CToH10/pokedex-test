@@ -9,6 +9,7 @@
 import PokeTeam from "@/components/PokeTeam.vue";
 import { Component, Vue } from "vue-property-decorator";
 import { Fragment } from "vue-fragment";
+
 @Component({
 	components: {
 		PokeTeam,

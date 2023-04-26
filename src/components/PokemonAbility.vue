@@ -24,13 +24,3 @@ export default defineComponent({
 	},
 });
 </script>
-
-<style>
-li {
-	list-style: none;
-}
-
-h4 {
-	text-transform: capitalize;
-}
-</style>
