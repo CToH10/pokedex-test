@@ -1,17 +1,12 @@
 <template>
-  <li>
-    <figure>
-      <img
-        :src="image"
-        :alt="rawObj.name"
-      >
-      <figcaption>{{ rawObj.name }}</figcaption>
-    </figure>
-    <h3>{{ rawObj.name }}</h3>
-    <router-link :to="link">
-      Veja mais
-    </router-link>
-  </li>
+	<li>
+		<figure>
+			<img :src="image" :alt="rawObj.name" />
+			<figcaption>{{ rawObj.name }}</figcaption>
+		</figure>
+		<h3>{{ rawObj.name }}</h3>
+		<router-link :to="link"> Veja mais </router-link>
+	</li>
 </template>
 
 <script lang="ts">

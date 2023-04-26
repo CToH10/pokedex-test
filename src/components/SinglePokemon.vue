@@ -5,18 +5,17 @@
         <img :src="pokemonImage" :alt="pokemonName" />
         <figcaption>{{ pokemonName }}</figcaption>
       </figure>
-      <ul class="types">
-        <PokemonType v-for="position in types" :key="position.length">
-          {{ position }}
-        </PokemonType>
+      <ul v-for="(type, index) in types" :key="index" class="types">
+        <PokemonType :pokeType="type" />
       </ul>
     </section>
     <section class="info">
       <h2 class="name">{{ pokemonName }}</h2>
     </section>
-    <ul class="abilities">
+    <ul class="abilities" v-for="(move, index) in moves" :key="index">
       <PokemonAbility />
     </ul>
+    <button @click="show">Show</button>
   </section>
 </template>
 
@@ -25,35 +24,37 @@ import PokemonAbility from "./PokemonAbility.vue";
 import PokemonType from "./PokemonType.vue";
 import { api } from "@/service/axios";
 
-interface iGetData {
-  list: Array<object>;
-}
-
 export default {
   components: {
     PokemonAbility,
     PokemonType,
   },
-  computed: {},
   data() {
     return {
+      types: [],
       pokemonName: "",
       pokemonImage: "",
-      types: "",
       selected: this.$route.params.pokeName,
     };
   },
   methods: {
-    async getData() {
+    show() {
+      console.log(this.types);
+      console.log(this.pokemonName);
+    },
+    async getTypes() {
       const url: string = "/pokemon/" + this.selected;
       const info = (await api.get(url)).data;
-      this.pokemonName = info.species.name;
-      this.pokemonImage = info.sprites.front_default;
-      this.types = info.types;
+
+      return info;
     },
   },
   created() {
-    this.getData();
+    this.getTypes().then((item) => {
+      this.types = item.types;
+      this.pokemonName = item.species.name;
+      this.pokemonImage = item.sprites.front_default;
+    });
   },
 };
 </script>
@@ -75,6 +76,6 @@ figcaption {
   color: orangered;
 }
 .info h2 {
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 </style>
