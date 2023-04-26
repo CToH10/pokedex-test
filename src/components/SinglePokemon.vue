@@ -20,9 +20,10 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from "vue";
+import { api } from "@/service/axios";
 import PokemonAbility from "./PokemonAbility.vue";
 import PokemonType from "./PokemonType.vue";
-import { api } from "@/service/axios";
 
 interface iData {
 	types: [];
@@ -32,7 +33,7 @@ interface iData {
 	selected: string;
 }
 
-export default {
+export default defineComponent({
 	components: {
 		PokemonAbility,
 		PokemonType,
@@ -65,7 +66,7 @@ export default {
 			this.moves = item.moves;
 		});
 	},
-};
+});
 </script>
 
 <style>

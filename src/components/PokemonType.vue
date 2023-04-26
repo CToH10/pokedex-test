@@ -5,6 +5,8 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from "vue";
+
 function iPokeType() {
 	return {
 		type: {
@@ -15,7 +17,7 @@ function iPokeType() {
 	};
 }
 
-export default {
+export default defineComponent({
 	props: {
 		pokeType: {
 			type: iPokeType,
@@ -30,7 +32,7 @@ export default {
 			name: String,
 		};
 	},
-};
+});
 </script>
 
 <style>
