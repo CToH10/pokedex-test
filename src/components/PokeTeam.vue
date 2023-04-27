@@ -8,6 +8,10 @@
 			<img :src="url" :alt="name" />
 			<p class="text-light text-capitalize align-self-center">{{ name }}</p>
 		</li>
+
+		<h3 v-if="!team.length" class="text-light align-self-center">
+			No pokémon selected
+		</h3>
 	</ul>
 </template>
 
