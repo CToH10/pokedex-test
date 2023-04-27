@@ -7,6 +7,9 @@
 		>
 			<img :src="url" :alt="name" />
 			<p class="text-light text-capitalize align-self-center">{{ name }}</p>
+			<button class="btn btn-danger btn-sm w-100" @click="removeState(name)">
+				Remove
+			</button>
 		</li>
 
 		<h3 v-if="!team.length" class="text-light align-self-center">
@@ -24,6 +27,11 @@ export default defineComponent({
 		return {
 			team: store.state.pokeTeam,
 		};
+	},
+	methods: {
+		removeState(name: string) {
+			store.commit("removeTeam", name);
+		},
 	},
 });
 </script>
