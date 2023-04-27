@@ -36,7 +36,8 @@
 			</button>
 		</section>
 		<ul
-			class="list-unstyled d-flex flex-row justify-content-center align-items-center flex-wrap"
+			class="list-unstyled d-flex flex-row justify-content-center align-items-center flex-wrap overflow-auto position-fixed translate-middle start-50"
+			style="height: 75vh; width: 75%; top: 60%"
 		>
 			<PokeCard :pokemon="pokemon" v-for="pokemon in list" :key="pokemon.url" />
 		</ul>
