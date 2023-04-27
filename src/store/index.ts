@@ -7,6 +7,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
 	state: {
 		pokeTeam: [] as iPokeList,
+		listUrl: "/pokemon",
 	},
 	getters: {},
 	mutations: {
@@ -29,6 +30,9 @@ export default new Vuex.Store({
 			}
 
 			state.pokeTeam.splice(index, 1);
+		},
+		changeUrl(state, url: string) {
+			state.listUrl = url;
 		},
 	},
 	actions: {},

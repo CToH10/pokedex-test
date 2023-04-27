@@ -78,13 +78,14 @@ export default defineComponent({
 		};
 	},
 	methods: {
-		async getData(url = "/pokemon") {
+		async getData(url = store.state.listUrl) {
 			const pokeList = (await api.get(url)).data;
 			return pokeList;
 		},
 		async nextList() {
 			this.getData(this.next).then((data) => {
 				listing.commit("change", data.results);
+				store.commit("changeUrl", this.next);
 				this.list = listing.state.currentList;
 				this.next = data.next;
 				this.previous = data.previous;
@@ -93,6 +94,7 @@ export default defineComponent({
 		async previousList() {
 			this.getData(this.previous).then((data) => {
 				listing.commit("change", data.results);
+				store.commit("changeUrl", this.previous);
 				this.list = listing.state.currentList;
 				this.next = data.next;
 				this.previous = data.previous;
