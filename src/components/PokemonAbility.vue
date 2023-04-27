@@ -1,23 +1,26 @@
 <template>
-  <li class="ability">
-    <h4 class="title">{{ abilityName }}</h4>
-    <p class="description">{{ power }}</p>
-  </li>
+	<li class="ability">
+		<h4 class="text-light text-capitalize">
+			{{ move.name }}
+		</h4>
+	</li>
 </template>
 
 <script lang="ts">
-export default {
-  data() {
-    return {
-      abilityName: "Nome",
-      power: "text",
-    };
-  },
-};
-</script>
+import { defineComponent } from "vue";
 
-<style>
-li {
-  list-style: none;
+function iMove() {
+	return {
+		name: String,
+		url: String,
+	};
 }
-</style>
+export default defineComponent({
+	props: {
+		move: {
+			type: Object as typeof iMove,
+			required: true,
+		},
+	},
+});
+</script>

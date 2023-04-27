@@ -1,17 +1,36 @@
 <template>
-  <p>{{ this.name }}</p>
+	<li>
+		<p class="text-light text-capitalize">{{ pokeType.type.name }}</p>
+	</li>
 </template>
 
-<script lang="ts" setup>
-export default {
-  props: {
-    name: String,
-  },
-};
-</script>
+<script lang="ts">
+import { defineComponent } from "vue";
 
-<style scoped>
-p {
-  color: v-bind("style.color");
+function iPokeType() {
+	return {
+		type: {
+			name: String,
+			url: String,
+		},
+		slot: Number,
+	};
 }
-</style>
+
+export default defineComponent({
+	props: {
+		pokeType: {
+			type: Object as typeof iPokeType,
+			required: true,
+		},
+	},
+	data() {
+		return {
+			style: {
+				color: "red",
+			},
+			name: String,
+		};
+	},
+});
+</script>
